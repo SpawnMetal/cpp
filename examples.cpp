@@ -1,15 +1,67 @@
 #include <iostream>
 #include <string>
+#include "examples2.cpp"
 
 using namespace std;
 
+class CCTest
+{
+public:
+    void setNumber(int);
+    void printNumber() const;
+
+private:
+    int number;
+};
+
+void CCTest::setNumber(int num) { number = num; }
+
+void CCTest::printNumber() const
+{
+    cout << "\nBefore: " << number; // 8
+    const_cast<CCTest *>(this)->number--;
+    cout << "\nAfter: " << number; // 7
+}
+
 int main()
 {
+
     int a = 0;
     bool b = false;
     auto C = {"qwe", "asd"};
+    int nums[] = {5, 6, 8};
+    decltype(b) qwe = true;
 
-    cout << "= " + to_string(b) << endl;
+    // printf_s("%d\n", b);
+    // cout << "= " + to_string(ex) << endl;
+
+    /*
+    int i = 0; // hidden by var with same name declared in for loop
+    for (int i = 0; i < 3; i++)
+    {
+        printf_s("%d\n", i);
+    }
+    i++;
+    printf_s("i=%d\n", i);
+    for (int i = 0; i < 3; i++)
+    {
+        printf_s("%d\n", i);
+    }
+    printf_s("i=%d\n", i);
+    */
+
+    /*
+    CCTest X;
+    X.setNumber(8);
+    X.printNumber();
+    */
+
+    /*
+    unsigned short y = 0xFFEE;
+    cout << hex << y << endl;
+    y = ~y; // Take one's complement
+    cout << hex << y << endl;
+    */
 
     /*
     unsigned short a = 0x5555; // pattern 0101 ...

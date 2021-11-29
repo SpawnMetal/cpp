@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "examples2.cpp"
+#include <typeinfo>
 
 using namespace std;
 
@@ -23,17 +24,56 @@ void CCTest::printNumber() const
     cout << "\nAfter: " << number; // 7
 }
 
+//
+
+class Account
+{
+public:
+    Account(double d) { _balance = d; }
+    virtual ~Account() {}
+    virtual double GetBalance() { return _balance; }
+    virtual void PrintBalance() { cerr << "Error. Balance not available for base type." << endl; } // Сработает, если закомментить virtual
+
+private:
+    double _balance;
+};
+
+class CheckingAccount : public Account
+{
+public:
+    CheckingAccount(double d) : Account(d) {}
+    void PrintBalance() { cout << "Checking account balance: " << GetBalance() << endl; }
+};
+
+class SavingsAccount : public Account
+{
+public:
+    SavingsAccount(double d) : Account(d) {}
+    void PrintBalance() { cout << "Savings account balance: " << GetBalance(); }
+};
+
 int main()
 {
-
-    int a = 0;
-    bool b = false;
-    auto C = {"qwe", "asd"};
-    int nums[] = {5, 6, 8};
-    decltype(b) qwe = true;
+    // int a = 0;
+    // bool b = false;
+    // auto C = {"qwe", "asd"};
+    // int nums[] = {5, 6, 8};
+    // decltype(b) qwe = true;
 
     // printf_s("%d\n", b);
     // cout << "= " + to_string(ex) << endl;
+
+    // Create objects of type CheckingAccount and SavingsAccount.
+    CheckingAccount checking(100.00);
+    SavingsAccount savings(1000.00);
+
+    // Call PrintBalance using a pointer to Account.
+    Account *pAccount = &checking;
+    pAccount->PrintBalance();
+
+    // Call PrintBalance using a pointer to Account.
+    pAccount = &savings;
+    pAccount->PrintBalance();
 
     /*
     int i = 0; // hidden by var with same name declared in for loop

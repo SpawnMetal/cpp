@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
-#include "examples2.cpp"
 #include <typeinfo>
+
+#include "examples2.cpp"
 
 using namespace std;
 
@@ -52,6 +53,25 @@ public:
     void PrintBalance() { cout << "Savings account balance: " << GetBalance(); }
 };
 
+size_t getPtrSize(char *ptr)
+{
+    return sizeof(ptr);
+}
+
+void showstat(int curr)
+{
+    static int nStatic; // Value of nStatic is retained
+                        // between each function call
+    nStatic += curr;
+    cout << "nStatic is " << nStatic << endl;
+
+    // nStatic is 0
+    // nStatic is 1
+    // nStatic is 3
+    // nStatic is 6
+    // nStatic is 10
+}
+
 int main()
 {
     // int a = 0;
@@ -63,6 +83,45 @@ int main()
     // printf_s("%d\n", b);
     // cout << "= " + to_string(ex) << endl;
 
+    /*
+    // Необработанные строковые литералы, содержащие неэкранированные символы \ и "
+    auto R0 = R"("Hello \ world")"; // const char*
+    cout << R0 << endl;
+
+    char newline = '\n';
+    char tab = '\t';
+    char backspace = '\b';
+    char backslash = '\\';
+    char nullChar = '\0';
+
+    cout << "Newline character: " << newline << "ending" << endl;
+    cout << "Tab character: " << tab << "ending" << endl;
+    cout << "Backspace character: " << backspace << "ending" << endl;
+    cout << "Backslash character: " << backslash << "ending" << endl;
+    cout << "Null character: " << nullChar << "ending" << endl;
+    */
+
+    /*
+    for (int i = 0; i < 5; i++)
+        showstat(i);
+    */
+
+    /*
+    char szHello[] = "Hello, world!";
+
+    cout << "The size of a char is: "
+         << sizeof(char)
+         << "\nThe length of " << szHello << " is: "
+         << sizeof szHello
+         << "\nThe size of the pointer is "
+         << getPtrSize(szHello) << endl;
+
+    // The size of a char is: 1
+    // The length of Hello, world! is: 14
+    // The size of the pointer is 4
+     */
+
+    /*
     // Create objects of type CheckingAccount and SavingsAccount.
     CheckingAccount checking(100.00);
     SavingsAccount savings(1000.00);
@@ -74,6 +133,7 @@ int main()
     // Call PrintBalance using a pointer to Account.
     pAccount = &savings;
     pAccount->PrintBalance();
+    */
 
     /*
     int i = 0; // hidden by var with same name declared in for loop
@@ -146,10 +206,14 @@ int main()
 
     /*
     string str = "str";
+    char asd[] = "\nasd";
+    const char *s1 = "\npoint";
 
     cout << "qwe\n" + str +
-                "\nasd"
-                "\nzxc";
+                asd +
+                s1 +
+                "\nzxc\
+                Continue";
     */
 
     return 0;

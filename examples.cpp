@@ -72,6 +72,14 @@ void showstat(int curr)
     // nStatic is 10
 }
 
+struct Date
+{
+    Date(int i, int j, int k) : day(i), month(j), year(k) {}
+    int month;
+    int day;
+    int year;
+};
+
 int main()
 {
     // int a = 0;
@@ -79,9 +87,28 @@ int main()
     // auto C = {"qwe", "asd"};
     // int nums[] = {5, 6, 8};
     // decltype(b) qwe = true;
-
     // printf_s("%d\n", b);
     // cout << "= " + to_string(ex) << endl;
+
+    /*
+    Date mydate(1, 1, 1900);
+    mydate.month = 2;
+    cout << mydate.month << "/" << mydate.day
+         << "/" << mydate.year << endl; // 2/1/1900
+
+    Date *mydate2 = new Date(1, 1, 2000);
+    mydate2->month = 2;
+    cout << mydate2->month << "/" << mydate2->day
+         << "/" << mydate2->year << endl;
+    delete mydate2; // 2/1/2000
+    */
+
+    /*
+    int a = 6;
+    int *p = &a;
+    cout << *p << endl;
+    cout << p << endl;
+    */
 
     /*
     // Необработанные строковые литералы, содержащие неэкранированные символы \ и "

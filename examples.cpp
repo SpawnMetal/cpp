@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <typeinfo>
+#include <tuple>
 
 #include "examples2.cpp"
 
@@ -80,6 +81,14 @@ struct Date
     int year;
 };
 
+tuple<int, string, double> f()
+{
+    int i{108};
+    string s{"Some text"};
+    double d{.01};
+    return {i, s, d};
+}
+
 int main()
 {
     // int a = 0;
@@ -89,6 +98,43 @@ int main()
     // decltype(b) qwe = true;
     // printf_s("%d\n", b);
     // cout << "= " + to_string(ex) << endl;
+
+    /*
+    union Printable_t
+    {
+        int i;
+        int j;
+        float f;
+        char c;
+        char *s;
+    } Printable;
+
+    Printable.i = 5;
+    Printable.j = 2;
+    printf_s("i = %i\n", Printable.i);
+    printf_s("j = %i\n", Printable.j);
+    printf_s("i = %i\n", Printable.i);
+    */
+
+    /*
+    auto t = f();
+    cout << get<0>(t) << " " << get<1>(t) << " " << get<2>(t) << endl; // 108 Some text 0.01
+    // --or--
+    int myval;
+    string myname;
+    double mydecimal;
+    tie(myval, myname, mydecimal) = f();
+    cout << myval << " " << myname << " " << mydecimal << endl; // 108 Some text 0.01
+    */
+
+    /*
+    int x[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    for (int y : x)
+    {   // Access by value using a copy declared as a specific type.
+        // Not preferred.
+        cout << y << " ";
+    }
+    */
 
     /*
     Date mydate(1, 1, 1900);

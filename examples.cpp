@@ -2,6 +2,9 @@
 #include <string>
 #include <typeinfo>
 #include <tuple>
+#include <algorithm>
+#include <vector>
+#include <functional>
 
 #include "examples2.cpp"
 
@@ -98,6 +101,48 @@ int main()
     // decltype(b) qwe = true;
     // printf_s("%d\n", b);
     // cout << "= " + to_string(ex) << endl;
+
+    /*
+    // Create a vector object that contains 9 elements.
+    vector<int> v;
+    for (int i = 1; i < 10; ++i)
+    {
+        v.push_back(i);
+    }
+
+    // Count the number of even numbers in the vector by
+    // using the for_each function and a lambda.
+    int evenCount = 0;
+    for_each(v.begin(), v.end(), [&evenCount](int n)
+             {
+                 cout << n;
+                 if (n % 2 == 0)
+                 {
+                     cout << " is even " << endl;
+                     ++evenCount;
+                 }
+                 else
+                 {
+                     cout << " is odd " << endl;
+                 }
+             });
+
+    // Print the count of even numbers to the console.
+    cout << "There are " << evenCount
+         << " even numbers in the vector." << endl;
+
+    // Assign the lambda expression that adds two numbers to an auto variable.
+    auto f1 = [](int x, int y)
+    { return x + y; };
+
+    cout << f1(2, 3) << endl;
+
+    // Assign the same lambda expression to a function object.
+    function<int(int, int)> f2 = [](int x, int y)
+    { return x + y; };
+
+    cout << f2(3, 4) << endl;
+    */
 
     /*
     union Printable_t

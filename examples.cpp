@@ -92,6 +92,36 @@ tuple<int, string, double> f()
     return {i, s, d};
 }
 
+class Point
+{
+public:
+    // Define "accessor" functions as
+    //  reference types.
+    unsigned &x();
+    unsigned &y();
+
+private:
+    // Note that these are declared at class scope:
+    unsigned obj_x;
+    unsigned obj_y;
+};
+
+unsigned &Point ::x()
+{
+    return obj_x;
+}
+unsigned &Point ::y()
+{
+    return obj_y;
+}
+
+void MyFunc(int c)
+{
+    if (c > numeric_limits<char>::max())
+        throw string("qwe");
+    // throw invalid_argument("MyFunc argument too large.");
+}
+
 int main()
 {
     // int a = 0;
@@ -99,8 +129,46 @@ int main()
     // auto C = {"qwe", "asd"};
     // int nums[] = {5, 6, 8};
     // decltype(b) qwe = true;
-    // printf_s("%d\n", b);
     // cout << "= " + to_string(ex) << endl;
+
+    /*
+    try
+    {
+        MyFunc(256); //cause an exception to throw
+    }
+
+    catch (string &e)
+    {
+        cerr << e << endl;
+        return -1;
+    }
+    // catch (invalid_argument &e)
+    // {
+    //     cerr << e.what() << endl;
+    //     return -1;
+    // }
+    */
+
+    /*
+    Point ThePoint;
+    // Use x() and y() as l-values.
+    ThePoint.x() = 7;
+    ThePoint.y() = 9;
+
+    // Use x() and y() as r-values.
+    cout << "x = " << ThePoint.x() << "\n"
+         << "y = " << ThePoint.y() << "\n";
+    */
+
+    /*
+    const int n = 5;
+    int num[n]{5, 6};
+    int qwe[] = {1, 2};
+    for (int i = 0; i < n; i++)
+        printf_s("%d\n", num[i]);
+    printf_s("sizeof = %d\n", sizeof num);
+    cout << typeid(qwe).name();
+    */
 
     /*
     // Create a vector object that contains 9 elements.
